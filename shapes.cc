@@ -74,3 +74,21 @@ void Rectangle::Scale(float scaFactor) {
     base = base * scaFactor;
     heigth = heigth * scaFactor;
 }
+
+bool Circle::compare_to(IComparable* other)
+{
+    Circle* otherCircle = (Circle*) other;
+    return otherCircle->radius == radius;
+}
+
+bool Triangle::compare_to(IComparable* other)
+{
+    Triangle* otherTriangle = (Triangle*) other;
+    return (otherTriangle->base == base && otherTriangle->heigth == heigth);
+}
+
+bool Rectangle::compare_to(IComparable* other)
+{
+    Rectangle* otherRectangle = (Rectangle*) other;
+    return (otherRectangle->base == base && otherRectangle->heigth == heigth);
+}

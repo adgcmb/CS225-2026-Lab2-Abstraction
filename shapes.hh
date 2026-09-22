@@ -7,7 +7,7 @@
 class IScale
 {
     public:
-        virtual Scale(float scaFactor) = 0;
+        virtual void Scale(float scaFactor) = 0;
 };
 
 class IDrawable
@@ -15,15 +15,19 @@ class IDrawable
     public:
         virtual void Draw() = 0;
 };
+class IComparable
+{
+    public:
+        virtual bool compare_to(IComparable* other) = 0;
+};
 
-class Shape : public IDrawable, public IScale {
+class Shape : public IDrawable, public IScale, public IComparable {
     protected:
         const char* color;
     public:
         virtual void setColor(const char *c);
-        virtual float CalculateArea() = 0
+        virtual float CalculateArea() = 0;
         virtual float CalculatePerimeter() = 0;
-
 };
 
 class Circle : public Shape{
@@ -34,6 +38,7 @@ class Circle : public Shape{
         void Draw() override;
         float CalculatePerimeter() override;
         void Scale(float scaFactor) override;
+        bool compare_to(IComparable* other) override;
 };
 
 class Triangle : public Shape {
@@ -44,6 +49,7 @@ class Triangle : public Shape {
         void Draw() override;
         float CalculatePerimeter() override;
         void Scale(float scaFactor) override;
+        bool compare_to(IComparable* other) override;
 };
 
 class Rectangle : public Shape {
@@ -54,6 +60,7 @@ class Rectangle : public Shape {
         void Draw() override;
         float CalculatePerimeter() override;
         void Scale(float scaFactor) override;
+        bool compare_to(IComparable* other) override;
 };
 
 #endif

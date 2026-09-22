@@ -25,6 +25,17 @@ int main() {
     }
 
     printf("Total area=%.2f\n", totalArea);
+
+    Circle c1(3);
+    Circle c2(3);
+
+    Shape* pc1 = &c1;
+    Shape* pc2 = &c2;
+
+    if(pc1->compare_to(pc2))
+    {
+        printf("They are equal");
+    }
     return 0;
 }
 
